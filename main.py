@@ -93,10 +93,13 @@ def clear_fields():
 root = tk.Tk()
 root.title("Article Summarizer")
 
-# Set background image
-logo_image = Image.open("fsDOG.jpg")
-background_photo = ImageTk.PhotoImage(logo_image)
-background_label = tk.Label(root, image=background_photo)
+# Set background image if available
+try:
+    logo_image = Image.open("fsDOG.jpg")
+    background_photo = ImageTk.PhotoImage(logo_image)
+    background_label = tk.Label(root, image=background_photo)
+except FileNotFoundError:
+    background_label = tk.Label(root)
 background_label.place(relwidth=1, relheight=1)
 
 # Create input field for the URL
